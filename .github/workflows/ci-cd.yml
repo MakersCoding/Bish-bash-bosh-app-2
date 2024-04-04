@@ -105,6 +105,9 @@ jobs:
         run: ls -lah ./aws/
 
       - name: Copy Dockerrun.aws.json to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           echo "Copying Dockerrun.aws.json to S3"
           aws s3 cp "./aws/Dockerrun.aws.json" "s3://$S3_DEPLOY_BUCKET" --region eu-west-2 --debug
