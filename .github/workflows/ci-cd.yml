@@ -94,10 +94,7 @@ jobs:
         run: chmod +x ./aws/create_dockerrun.sh
 
       - name: Create Dockerrun.aws.json
-        run: |
-          ./create_dockerrun.sh
-          echo "Listing contents of the current directory:"
-          ls -lah
+        run: ./create_dockerrun.sh
         working-directory: ./aws
         env:
           CONTAINER_REGISTRY_URL: ${{ env.CONTAINER_REGISTRY_URL }}
@@ -110,7 +107,7 @@ jobs:
       - name: Copy Dockerrun.aws.json to S3
         run: |
           echo "Copying Dockerrun.aws.json to S3"
-          aws s3 cp Dockerrun.aws.json "s3://$S3_DEPLOY_BUCKET" --region eu-west-2 --debug
+          aws s3 cp "./aws/Dockerrun.aws.json" "s3://$S3_DEPLOY_BUCKET" --region eu-west-2 --debug
 
       - name: Deploy new application version to Elastic Beanstalk
         run: |
