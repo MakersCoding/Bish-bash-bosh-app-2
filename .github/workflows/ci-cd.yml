@@ -17,6 +17,7 @@ jobs:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: test_db
+      AWS_DEFAULT_REGION: eu-west-2
 
     steps:
       - uses: actions/checkout@v2
@@ -121,11 +122,13 @@ jobs:
               --version-label "$GITHUB_SHA" \
               --source-bundle S3Bucket="$S3_DEPLOY_BUCKET",S3Key="Dockerrun.aws.json" \
               --no-auto-create-application \
+              --region eu-west-2 \
               --debug
             echo "Updating environment:"
             aws elasticbeanstalk update-environment \
               --application-name "$ELASTIC_BEANSTALK_APP_NAME" \
               --environment-name "$ELASTIC_BEANSTALK_ENV_NAME" \
               --version-label "$GITHUB_SHA" \
+              --region eu-west-2 \
               --debug
         shell: /usr/bin/bash -e {0}
