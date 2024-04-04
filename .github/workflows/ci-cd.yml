@@ -114,6 +114,9 @@ jobs:
           aws s3 cp "./aws/Dockerrun.aws.json" "s3://$S3_DEPLOY_BUCKET" --region eu-west-2
 
       - name: Deploy new application version to Elastic Beanstalk
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}        
         run: |
             echo "Deploying new application version"
             echo "Creating application version:"
