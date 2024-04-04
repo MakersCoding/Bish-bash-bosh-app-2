@@ -94,7 +94,10 @@ jobs:
         run: chmod +x ./aws/create_dockerrun.sh
 
       - name: Create Dockerrun.aws.json
-        run: ./create_dockerrun.sh
+        run: |
+          ./create_dockerrun.sh
+          echo "Listing contents of the current directory:"
+          ls -lah
         working-directory: ./aws
         env:
           CONTAINER_REGISTRY_URL: ${{ env.CONTAINER_REGISTRY_URL }}
