@@ -107,7 +107,7 @@ jobs:
       - name: Copy Dockerrun.aws.json to S3
         run: |
           echo "Copying Dockerrun.aws.json to S3"
-          aws s3 cp Dockerrun.aws.json "s3://$S3_DEPLOY_BUCKET"
+          aws s3 cp Dockerrun.aws.json "s3://$S3_DEPLOY_BUCKET" --region eu-west-2 --debug
 
       - name: Deploy new application version to Elastic Beanstalk
         run: |
