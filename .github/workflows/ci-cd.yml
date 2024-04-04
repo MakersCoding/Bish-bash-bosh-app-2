@@ -120,6 +120,7 @@ jobs:
             --version-label "$GITHUB_SHA" \
             --source-bundle S3Bucket="$S3_DEPLOY_BUCKET",S3Key="Dockerrun.aws.json" \
             --no-auto-create-application
+            --debug > create_app_version_output.txt 2>&1
           aws elasticbeanstalk update-environment \
             --application-name "$ELASTIC_BEANSTALK_APP_NAME" \
             --environment-name "$ELASTIC_BEANSTALK_ENV_NAME" \
