@@ -121,3 +121,6 @@ jobs:
             --application-name "$ELASTIC_BEANSTALK_APP_NAME" \
             --environment-name "$ELASTIC_BEANSTALK_ENV_NAME" \
             --version-label "$GITHUB_SHA"
+
+
+            
