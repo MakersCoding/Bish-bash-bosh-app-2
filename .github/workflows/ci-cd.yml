@@ -110,7 +110,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           echo "Copying Dockerrun.aws.json to S3"
-          aws s3 cp "./aws/Dockerrun.aws.json" "s3://$S3_DEPLOY_BUCKET" --region eu-west-2 --debug
+          aws s3 cp "./aws/Dockerrun.aws.json" "s3://$S3_DEPLOY_BUCKET" --region eu-west-2
 
       - name: Deploy new application version to Elastic Beanstalk
         run: |
@@ -124,3 +124,4 @@ jobs:
             --application-name "$ELASTIC_BEANSTALK_APP_NAME" \
             --environment-name "$ELASTIC_BEANSTALK_ENV_NAME" \
             --version-label "$GITHUB_SHA"
+            --debug
