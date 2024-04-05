@@ -2,11 +2,12 @@
 
 # See link for format required by AWS for the Dockerrun.aws.json file
 # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html
+
 cat <<EOF > Dockerrun.aws.json
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "$CONTAINER_REGISTRY_URL/$CONTAINER_REPOSITORY_NAME:$GITHUB_SHA",
+    "Name": "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$CONTAINER_REPOSITORY_NAME:$GITHUB_SHA",
     "Update": "true"
   },
   "Ports": [

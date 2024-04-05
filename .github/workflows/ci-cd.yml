@@ -81,11 +81,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: push
     env:
-      CONTAINER_REGISTRY_URL: "https://eu-west-2.console.aws.amazon.com/ecr/repositories/public/664047078509/bish-bash-bosh-repo2?region=eu-west-2"
-      CONTAINER_REPOSITORY_NAME: "bish-bash-bosh-repo2"
+      CONTAINER_REGISTRY_URL:  "https://eu-west-2.console.aws.amazon.com/ecr/repositories/private/664047078509/bish-bash-bosh-repo"
+      CONTAINER_REPOSITORY_NAME: "bish-bash-bosh-repo"
       S3_DEPLOY_BUCKET: "bish-bash-bucket"
       ELASTIC_BEANSTALK_APP_NAME: "bish-bash-bosh-task-listing-app"
       ELASTIC_BEANSTALK_ENV_NAME: "bi-ba-bo-task-list-app-env"
+      AWS_ACCOUNT_ID: "664047078509"
+      AWS_REGION: "eu-west-2"
 
     steps:
       - name: Checkout code
@@ -136,4 +138,3 @@ jobs:
               --debug
         shell: /usr/bin/bash -e {0}
 
-        
