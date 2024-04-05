@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: push
     env:
-      CONTAINER_REGISTRY_URL: "https://eu-west-2.console.aws.amazon.com/ecr/repositories/private/664047078509/bish-bash-bosh-repo?region=eu-west-2"
+      CONTAINER_REGISTRY_URL: "https://eu-west-2.console.aws.amazon.com/ecr/repositories/public/664047078509/bish-bash-bosh-repo2?region=eu-west-2"
       CONTAINER_REPOSITORY_NAME: "bish-bash-bosh-repo2"
       S3_DEPLOY_BUCKET: "bish-bash-bucket"
       ELASTIC_BEANSTALK_APP_NAME: "bish-bash-bosh-task-listing-app"
