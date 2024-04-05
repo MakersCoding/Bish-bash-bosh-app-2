@@ -122,7 +122,7 @@ jobs:
             echo "Creating application version:"
             aws elasticbeanstalk create-application-version \
               --application-name "$ELASTIC_BEANSTALK_APP_NAME" \
-              --version-label "$GITHUB_SHA" \
+              --version-label "1.0.0" \
               --source-bundle S3Bucket="$S3_DEPLOY_BUCKET",S3Key="Dockerrun.aws.json" \
               --no-auto-create-application \
               --region eu-west-2 \
@@ -131,7 +131,7 @@ jobs:
             aws elasticbeanstalk update-environment \
               --application-name "$ELASTIC_BEANSTALK_APP_NAME" \
               --environment-name "$ELASTIC_BEANSTALK_ENV_NAME" \
-              --version-label "$GITHUB_SHA" \
+              --version-label "1.0.0" \
               --region eu-west-2 \
               --debug
         shell: /usr/bin/bash -e {0}
